@@ -9,9 +9,9 @@ src
  |   |   +- com
  |   |       +- townmc
  |   |           +- demo
- |   |               +- Application.java  // springboot入口
+ |   |               +- Application.java  // springboot入口类
  |   |               |
- |   |               +- configuration // springboot配置文件
+ |   |               +- configuration // springboot配置文件目录
  |   |               |
  |   |               +- controller // http请求控制器代码
  |   |               |
