@@ -13,6 +13,8 @@ src
  |   |               |
  |   |               +- configuration // springboot配置文件
  |   |               |
+ |   |               +- controller // http请求控制器代码
+ |   |               |
  |   |               +- dao // 持久化层代码
  |   |               |
  |   |               +- domain // 实体bean代码
@@ -24,8 +26,8 @@ src
  |   |               |
  |   |               +- utils // 帮助类
  |   |               |
- |   |               +- web // 网络请求入口。 控制器等代码
- |   |                   +- MainController.java
+ |   |               +- web // 网络请求相关定义,拦截器错误处理等
+ |   |               |
  |   +- resources // 配置文件资源文件
  +- test // 测试代码
      +- java

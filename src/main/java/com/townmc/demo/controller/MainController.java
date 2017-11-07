@@ -1,4 +1,4 @@
-package com.townmc.demo.web.controller;
+package com.townmc.demo.controller;
 
 import com.townmc.demo.domain.dto.DemoResponse;
 import com.townmc.demo.utils.ApiResponse;

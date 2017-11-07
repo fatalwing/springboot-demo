@@ -1,4 +1,4 @@
-package com.townmc.demo.web.controller;
+package com.townmc.demo.controller;
 
 import com.townmc.demo.domain.po.Demo;
 import com.townmc.demo.service.DemoService;
