@@ -14,6 +14,11 @@ public class DemoServiceTests {
 
     @Test
     public void testAdd() {
-        demoService.add("t1", "自动测试2");
+        demoService.add("t2", "自动测试4");
+    }
+
+    @Test
+    public void testUpdate() {
+        demoService.update("a2", "自动测试修改4");
     }
 }

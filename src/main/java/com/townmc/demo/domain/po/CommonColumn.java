@@ -1,18 +1,18 @@
 package com.townmc.demo.domain.po;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Version;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * 所有表都包含的列
  */
+@MappedSuperclass
 public class CommonColumn {
 
     /**
@@ -42,7 +42,8 @@ public class CommonColumn {
     /**
      * 该条数据是否为逻辑删除状态
      */
-    @Column(name = "is_deleted", nullable = false,columnDefinition = "INT default 0")
+    @Column(name = "is_deleted", nullable = false, columnDefinition = "INT default 0")
+    @Generated(GenerationTime.INSERT)
     private Integer isDeleted;
 
     public Long getVersion() {

@@ -16,9 +16,20 @@ public class DemoService {
         return demoDao.findAll();
     }
 
+    public Demo findOne(String id) {
+        return demoDao.findOne(id);
+    }
+
     public Demo add(String id, String name) {
         Demo data = new Demo();
         data.setDemoId(id);
+        data.setDemoName(name);
+        Demo result = demoDao.save(data);
+        return result;
+    }
+
+    public Demo update(String id, String name) {
+        Demo data = demoDao.findOne(id);
         data.setDemoName(name);
         Demo result = demoDao.save(data);
         return result;

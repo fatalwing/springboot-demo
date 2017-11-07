@@ -21,4 +21,11 @@ public class DemoController {
         Demo re = demoService.add(id, name);
         return ApiResponse.success(re);
     }
+
+    @RequestMapping("/get.json")
+    @ResponseBody
+    public ApiResponse get(String id) {
+        Demo re = demoService.findOne(id);
+        return ApiResponse.success(re);
+    }
 }

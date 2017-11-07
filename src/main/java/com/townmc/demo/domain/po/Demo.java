@@ -1,12 +1,13 @@
 package com.townmc.demo.domain.po;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * 商家模型
  */
 @Entity
-public class Demo extends CommonColumn {
+public class Demo extends CommonColumn implements Serializable {
     @Id
     private String demoId;
     private String demoName;
