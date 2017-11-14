@@ -416,7 +416,7 @@
                 可以做以下尝试:
                 <ul>
                     <li>重新搜索页面</li>
-                    <li>访问 <a href="http://mogoolab.com" title="Robotik Sitemap">主页</a></li>
+                    <li>访问 <a href="/" title="Robotik Sitemap">主页</a></li>
                     <li><a href="javascript:history.go(-1)" title="Back">返回</a></li>
                 </ul>
             </div>
@@ -439,11 +439,11 @@
         <!--<footer>
             <p class="copy">&copy 2011 Robotik 404. All rights reserved.</p>
             <menu>
-                <li><a href="http://mogoolab.com" title="Home">Home</a></li>
-                <li><a href="http://mogoolab.com/who-we-are" title="About Us">About us</a></li>
-                <li><a href="http://mogoolab.com/category/portfolio" title="Services">Services</a></li>
-                <li><a href="http://mogoolab.com/" title="Partners">Partners</a></li>
-                <li class="last"><a href="http://mogoolab.com/contact" title="Contact">Contact</a></li>
+                <li><a href="#" title="Home">Home</a></li>
+                <li><a href="#" title="About Us">About us</a></li>
+                <li><a href="#" title="Services">Services</a></li>
+                <li><a href="#" title="Partners">Partners</a></li>
+                <li class="last"><a href="#" title="Contact">Contact</a></li>
             </menu>
         </footer>-->
         <!-- end footer -->
