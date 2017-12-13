@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+
 @Controller
 @RequestMapping("/_demo_")
 public class DemoController {
@@ -54,5 +58,47 @@ public class DemoController {
     public ApiResponse get(@PathVariable("id") String id) {
         Demo re = demoService.findOne(id);
         return ApiResponse.success(re);
+    }
+
+    /**
+     * 输出流
+     * @param request
+     * @param response
+     */
+    @RequestMapping("/pic.do")
+    public void juniuoPic2(HttpServletRequest request, HttpServletResponse response) {
+        InputStream inStream = null;
+        ByteArrayOutputStream outStream = null;
+        OutputStream o = null;
+        try {
+            inStream = new FileInputStream("");
+
+            outStream = new ByteArrayOutputStream();
+            byte[] buffer = new byte[2048];
+            int len = 0;
+            while( (len=inStream.read(buffer)) != -1 ){
+                outStream.write(buffer, 0, len);
+            }
+            byte data[] = outStream.toByteArray();
+
+            response.setContentType("image/jpg"); //设置返回的文件类型
+            o = response.getOutputStream();
+            o.write(data);
+            o.flush();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if(null != inStream) inStream.close();
+                if(null != outStream) outStream.close();
+                if(null != o) o.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }

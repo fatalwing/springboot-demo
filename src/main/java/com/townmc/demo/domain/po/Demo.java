@@ -8,9 +8,21 @@ import java.io.Serializable;
  */
 @Entity
 public class Demo extends CommonColumn implements Serializable {
+    public enum DemoStatus {normal, warn}
+
     @Id
     private String demoId;
     private String demoName;
+    @Enumerated(EnumType.STRING)
+    private DemoStatus status;
+
+    public DemoStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(DemoStatus status) {
+        this.status = status;
+    }
 
     public String getDemoId() {
         return demoId;
