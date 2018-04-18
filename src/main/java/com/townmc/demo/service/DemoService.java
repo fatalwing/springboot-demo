@@ -17,7 +17,7 @@ public class DemoService {
     }
 
     public Demo findOne(String id) {
-        return demoDao.findOne(id);
+        return demoDao.findById(id).get();
     }
 
     public Demo add(String id, String name) {
@@ -29,7 +29,7 @@ public class DemoService {
     }
 
     public Demo update(String id, String name) {
-        Demo data = demoDao.findOne(id);
+        Demo data = demoDao.findById(id).get();
         data.setDemoName(name);
         Demo result = demoDao.save(data);
         return result;

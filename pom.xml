@@ -6,7 +6,7 @@
 
     <groupId>com.townmc</groupId>
     <artifactId>springboot-demo</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>2.0.1.1</version>
 
     <properties>
         <tomcat.version>8.5.23</tomcat.version>
@@ -15,7 +15,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.8.RELEASE</version>
+        <version>2.0.1.RELEASE</version>
     </parent>
 
     <dependencies>
