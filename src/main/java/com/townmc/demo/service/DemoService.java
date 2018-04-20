@@ -2,6 +2,7 @@ package com.townmc.demo.service;
 
 import com.townmc.demo.dao.DemoDao;
 import com.townmc.demo.domain.po.Demo;
+import com.townmc.demo.utils.LogicException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class DemoService {
     }
 
     public Demo findOne(String id) {
-        return demoDao.findById(id).get();
+        return demoDao.findById(id).orElse(null);
     }
 
     public Demo add(String id, String name) {
@@ -29,7 +30,7 @@ public class DemoService {
     }
 
     public Demo update(String id, String name) {
-        Demo data = demoDao.findById(id).get();
+        Demo data = demoDao.findById(id).orElseThrow(new LogicException("object_not_exists", "修改的对象不存在"));
         data.setDemoName(name);
         Demo result = demoDao.save(data);
         return result;

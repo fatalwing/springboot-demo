@@ -1,9 +1,12 @@
 package com.townmc.demo.utils;
 
+import java.util.Optional;
+import java.util.function.Supplier;
+
 /**
  * 系统逻辑异常
  */
-public class LogicException extends RuntimeException {
+public class LogicException extends RuntimeException implements Supplier<LogicException> {
 
     private String errorCode;
 
@@ -43,5 +46,11 @@ public class LogicException extends RuntimeException {
 
     public String getErrorCode() {
         return errorCode;
+    }
+
+    @Override
+    public LogicException get() {
+        return new LogicException(Optional.of(this.getErrorCode()).orElse("system_error"),
+                Optional.of(this.getErrorInfo()).orElse("系统异常。by_exception"));
     }
 }

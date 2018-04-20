@@ -1,12 +1,15 @@
 package com.townmc.demo.utils;
 
-import com.townmc.utils.JsonUtil;
-
+/**
+ * ajax访问时统一的返回格式对象
+ * 具体业务数据为泛类T
+ * @param <T>
+ */
 public class ApiResponse<T> {
 
-    private String errorCode;
-    private String errorInfo;
-    private T data;
+    private String errorCode; // 定义的错误码
+    private String errorInfo; // 出现错误时具体错误信息
+    private T data; // 返回的数据对象
 
     public ApiResponse(String errorCode, String errorInfo, T t) {
         this.errorCode = errorCode;

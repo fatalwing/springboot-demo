@@ -43,5 +43,5 @@ mvn clean package -Dmaven.test.skip=true
 在target下会生成jar包，名字根据为pom中定义产生，artifactId-version.jar  
 可以指定配置文件运行jar包并输出控制台打印：  
 ```
-nohup java -jar "-Dspring.config.location=/you-path/application.yml" "artifactId-version.jar.jar" >> "console.log" &
+nohup java -jar "-Dspring.config.location=/you-path/application.yml" "artifactId-version.jar.jar" >> "console.log" 2>&1 &
 ```

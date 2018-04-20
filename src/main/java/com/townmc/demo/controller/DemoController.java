@@ -44,7 +44,7 @@ public class DemoController {
     @PostMapping("/update.json")
     @ResponseBody
     public ApiResponse add(@RequestBody String requestBody) {
-
+        demoService.update("001", "abc");
         return ApiResponse.success("");
     }
 
