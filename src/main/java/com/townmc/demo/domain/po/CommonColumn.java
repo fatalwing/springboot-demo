@@ -42,9 +42,9 @@ public class CommonColumn {
     /**
      * 该条数据是否为逻辑删除状态
      */
-    @Column(name = "is_deleted", nullable = false, columnDefinition = "INT default 0")
+    @Column(name = "deleted", nullable = false, columnDefinition = "INT default 0")
     @Generated(GenerationTime.INSERT)
-    private Integer isDeleted;
+    private Integer deleted;
 
     public Long getVersion() {
         return version;
@@ -70,11 +70,11 @@ public class CommonColumn {
         this.lastUpdated = lastUpdated;
     }
 
-    public Integer getIsDeleted() {
-        return isDeleted;
+    public Integer getDeleted() {
+        return deleted;
     }
 
-    public void setIsDeleted(Integer isDeleted) {
-        this.isDeleted = isDeleted;
+    public void setDeleted(Integer deleted) {
+        this.deleted = deleted;
     }
 }

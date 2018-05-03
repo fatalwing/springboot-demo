@@ -29,6 +29,9 @@ src
  |   |               +- web // 网络请求相关定义,拦截器错误处理等
  |   |               |
  |   +- resources // 配置文件资源文件
+ |   |   +- application-dev.yml // 开发环境配置
+ |   |   |
+ |   |   +- application-product.yml // 生产环境配置
  +- test // 测试代码
      +- java
      |
@@ -41,7 +44,6 @@ src
 mvn clean package -Dmaven.test.skip=true
 ```
 在target下会生成jar包，名字根据为pom中定义产生，artifactId-version.jar  
-可以指定配置文件运行jar包并输出控制台打印：  
+可以指定对应环境(product/dev)的配置文件运行jar包并输出控制台打印：  
 ```
-nohup java -jar "-Dspring.config.location=/you-path/application.yml" "artifactId-version.jar.jar" >> "console.log" 2>&1 &
-```
+nohup java -jar artifactId-version.jar --spring.profiles.active=product >> console.log 2>&1 &
