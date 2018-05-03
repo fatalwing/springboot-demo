@@ -1,38 +1,40 @@
 package com.townmc.demo.service;
 
-import com.townmc.demo.dao.DemoDao;
 import com.townmc.demo.domain.po.Demo;
-import com.townmc.demo.utils.LogicException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("merchantService")
-public class DemoService {
-    @Autowired private DemoDao demoDao;
+/**
+ * 演示service接口
+ */
+public interface DemoService {
 
-    public List<Demo> listAll() {
+    /**
+     * 获得所有记录
+     * @return
+     */
+    public List<Demo> listAll();
 
-        return demoDao.findAll();
-    }
+    /**
+     * 根据id查询记录
+     * @param id
+     * @return
+     */
+    public Demo findOne(String id);
 
-    public Demo findOne(String id) {
-        return demoDao.findById(id).orElse(null);
-    }
+    /**
+     * 添加记录
+     * @param id
+     * @param name
+     * @return
+     */
+    public Demo add(String id, String name);
 
-    public Demo add(String id, String name) {
-        Demo data = new Demo();
-        data.setDemoId(id);
-        data.setDemoName(name);
-        Demo result = demoDao.save(data);
-        return result;
-    }
-
-    public Demo update(String id, String name) {
-        Demo data = demoDao.findById(id).orElseThrow(new LogicException("object_not_exists", "修改的对象不存在"));
-        data.setDemoName(name);
-        Demo result = demoDao.save(data);
-        return result;
-    }
+    /**
+     * 修改记录
+     * @param id
+     * @param name
+     * @return
+     */
+    public Demo update(String id, String name);
 }

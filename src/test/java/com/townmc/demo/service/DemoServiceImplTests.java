@@ -1,6 +1,7 @@
 package com.townmc.demo.service;
 
 import com.townmc.demo.Application;
+import com.townmc.demo.service.impl.DemoServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,18 +11,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
-public class DemoServiceTests {
+public class DemoServiceImplTests {
     @Autowired private JdbcTemplate jdbcTemplate;
-    @Autowired private DemoService demoService;
+    @Autowired private DemoServiceImpl demoServiceImpl;
 
     @Test
     public void testAdd() {
         jdbcTemplate.update("delete from demo where demo_id=?", new Object[]{"t2"});
-        demoService.add("t2", "自动测试4");
+        demoServiceImpl.add("t2", "自动测试4");
     }
 
     @Test
     public void testUpdate() {
-        demoService.update("a2", "自动测试修改4");
+        demoServiceImpl.update("a2", "自动测试修改4");
     }
 }

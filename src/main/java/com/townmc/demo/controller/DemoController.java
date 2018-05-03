@@ -1,7 +1,7 @@
 package com.townmc.demo.controller;
 
 import com.townmc.demo.domain.po.Demo;
-import com.townmc.demo.service.DemoService;
+import com.townmc.demo.service.impl.DemoServiceImpl;
 import com.townmc.demo.utils.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,7 @@ import java.io.*;
 @RequestMapping("/_demo_")
 public class DemoController {
 
-    @Autowired private DemoService demoService;
+    @Autowired private DemoServiceImpl demoServiceImpl;
 
     /**
      * 访问页面
@@ -32,7 +32,7 @@ public class DemoController {
     public ApiResponse add(@RequestParam(name="id", required=true) String id,
                            @RequestParam(name="name", required=false) String name) {
 
-        Demo re = demoService.add(id, name);
+        Demo re = demoServiceImpl.add(id, name);
         return ApiResponse.success(re);
     }
 
@@ -44,7 +44,7 @@ public class DemoController {
     @PostMapping("/update.json")
     @ResponseBody
     public ApiResponse add(@RequestBody String requestBody) {
-        demoService.update("001", "abc");
+        demoServiceImpl.update("001", "abc");
         return ApiResponse.success("");
     }
 
@@ -56,7 +56,7 @@ public class DemoController {
     @RequestMapping("/{id}/get.json")
     @ResponseBody
     public ApiResponse get(@PathVariable("id") String id) {
-        Demo re = demoService.findOne(id);
+        Demo re = demoServiceImpl.findOne(id);
         return ApiResponse.success(re);
     }
 
