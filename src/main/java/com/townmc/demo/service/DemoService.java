@@ -23,6 +23,13 @@ public interface DemoService {
     public Demo findOne(String id);
 
     /**
+     * 使用sql查询
+     * @param id
+     * @return
+     */
+    public Demo findOneBySqlDao(String id);
+
+    /**
      * 添加记录
      * @param id
      * @param name

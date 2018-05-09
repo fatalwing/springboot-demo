@@ -11,6 +11,10 @@ spring:
     jpa:
         show-sql: true
         database: mysql
+    redis:
+        host: localhost
+        password: 123456
+        port: 6379
     jackson:
         time-zone: GMT+8
         date-format: yyyy-MM-dd HH:mm:ss
