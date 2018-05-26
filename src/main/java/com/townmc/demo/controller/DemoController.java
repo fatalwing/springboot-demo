@@ -23,9 +23,13 @@ public class DemoController {
      */
     @RequestMapping("/index.htm")
     public String indexPage() {
-        return "/index";
+        return "/_demo_/index";
     }
 
+    @RequestMapping("/socket.htm")
+    public String socketPage() {
+        return "/_demo_/socket";
+    }
 
     @RequestMapping("/add.json")
     @ResponseBody
