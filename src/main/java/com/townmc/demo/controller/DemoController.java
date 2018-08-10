@@ -44,7 +44,7 @@ public class DemoController {
 
     @RequestMapping("/update.json")
     @ResponseBody
-    //@RetryOnOptimisticLockingFailure
+    @RetryOnOptimisticLockingFailure
     public ApiResponse update(String id, String name) {
         demoService.update(id, name);
         return ApiResponse.success("");
