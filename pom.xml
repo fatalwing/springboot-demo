@@ -6,7 +6,7 @@
 
     <groupId>com.townmc</groupId>
     <artifactId>springboot-demo</artifactId>
-    <version>2.0.1.1</version>
+    <version>2.0.1.2</version>
 
     <properties>
         <tomcat.version>8.5.23</tomcat.version>
@@ -15,7 +15,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.3.RELEASE</version>
+        <version>2.0.4.RELEASE</version>
     </parent>
 
     <dependencies>
@@ -57,7 +57,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.18</version>
+            <version>6.0.6</version>
             <scope>runtime</scope>
         </dependency>
 

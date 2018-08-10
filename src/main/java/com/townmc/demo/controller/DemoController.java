@@ -1,8 +1,10 @@
 package com.townmc.demo.controller;
 
 import com.townmc.demo.domain.po.Demo;
+import com.townmc.demo.service.DemoService;
 import com.townmc.demo.service.impl.DemoServiceImpl;
 import com.townmc.demo.utils.ApiResponse;
+import com.townmc.demo.utils.annotations.RetryOnOptimisticLockingFailure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +17,7 @@ import java.io.*;
 @RequestMapping("/_demo_")
 public class DemoController {
 
-    @Autowired private DemoServiceImpl demoServiceImpl;
+    @Autowired private DemoService demoService;
 
     /**
      * 访问页面
@@ -36,8 +38,16 @@ public class DemoController {
     public ApiResponse add(@RequestParam(name="id", required=true) String id,
                            @RequestParam(name="name", required=false) String name) {
 
-        Demo re = demoServiceImpl.add(id, name);
+        Demo re = demoService.add(id, name);
         return ApiResponse.success(re);
+    }
+
+    @RequestMapping("/update.json")
+    @ResponseBody
+    //@RetryOnOptimisticLockingFailure
+    public ApiResponse update(String id, String name) {
+        demoService.update(id, name);
+        return ApiResponse.success("");
     }
 
     /**
@@ -45,10 +55,10 @@ public class DemoController {
      * @param requestBody
      * @return
      */
-    @PostMapping("/update.json")
+    @PostMapping("/body_update.json")
     @ResponseBody
-    public ApiResponse add(@RequestBody String requestBody) {
-        demoServiceImpl.update("001", "abc");
+    public ApiResponse bbUpdate(@RequestBody String requestBody) {
+        demoService.update("001", "abc");
         return ApiResponse.success("");
     }
 
@@ -60,7 +70,7 @@ public class DemoController {
     @RequestMapping("/{id}/get.json")
     @ResponseBody
     public ApiResponse get(@PathVariable("id") String id) {
-        Demo re = demoServiceImpl.findOne(id);
+        Demo re = demoService.findOne(id);
         return ApiResponse.success(re);
     }
 

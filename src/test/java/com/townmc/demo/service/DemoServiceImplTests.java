@@ -3,6 +3,7 @@ package com.townmc.demo.service;
 import com.townmc.demo.Application;
 import com.townmc.demo.domain.po.Demo;
 import com.townmc.demo.service.impl.DemoServiceImpl;
+import com.townmc.demo.utils.annotations.RetryOnOptimisticLockingFailure;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,9 @@ public class DemoServiceImplTests {
     }
 
     @Test
+    @RetryOnOptimisticLockingFailure
     public void testUpdate() {
-        demoService.update("a2", "自动测试修改4");
+        demoService.update("t2", "自动测试修改45");
     }
 
     @Test
