@@ -20,13 +20,13 @@ public class DemoServiceImplTests {
     @Test
     public void testAdd() {
         jdbcTemplate.update("delete from demo where demo_id=?", new Object[]{"t2"});
-        demoService.add("t2", "自动测试4");
+        demoService.add("t2", "自动测试4", Demo.DemoStatus.normal);
     }
 
     @Test
     @RetryOnOptimisticLockingFailure
     public void testUpdate() {
-        demoService.update("t2", "自动测试修改45");
+        demoService.update("t2", "自动测试修改45", Demo.DemoStatus.warn);
     }
 
     @Test

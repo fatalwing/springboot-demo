@@ -28,17 +28,19 @@ public class DemoServiceImpl implements DemoService {
         return sqlDao.findOne(id);
     }
 
-    public Demo add(String id, String name) {
+    public Demo add(String id, String name, Demo.DemoStatus status) {
         Demo data = new Demo();
         data.setDemoId(id);
         data.setDemoName(name);
+        data.setStatus(status);
         Demo result = jpaDao.save(data);
         return result;
     }
 
-    public Demo update(String id, String name) {
+    public Demo update(String id, String name, Demo.DemoStatus status) {
         Demo data = jpaDao.findById(id).orElseThrow(new LogicException("object_not_exists", "修改的对象不存在"));
         data.setDemoName(name);
+        data.setStatus(status);
         Demo result = jpaDao.save(data);
         return result;
     }

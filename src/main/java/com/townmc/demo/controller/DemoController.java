@@ -38,7 +38,7 @@ public class DemoController {
     public ApiResponse add(@RequestParam(name="id", required=true) String id,
                            @RequestParam(name="name", required=false) String name) {
 
-        Demo re = demoService.add(id, name);
+        Demo re = demoService.add(id, name, Demo.DemoStatus.normal);
         return ApiResponse.success(re);
     }
 
@@ -46,7 +46,7 @@ public class DemoController {
     @ResponseBody
     @RetryOnOptimisticLockingFailure
     public ApiResponse update(String id, String name) {
-        demoService.update(id, name);
+        demoService.update(id, name, Demo.DemoStatus.normal);
         return ApiResponse.success("");
     }
 
@@ -58,7 +58,7 @@ public class DemoController {
     @PostMapping("/body_update.json")
     @ResponseBody
     public ApiResponse bbUpdate(@RequestBody String requestBody) {
-        demoService.update("001", "abc");
+        demoService.update("001", "abc", Demo.DemoStatus.normal);
         return ApiResponse.success("");
     }
 

@@ -35,7 +35,7 @@ public interface DemoService {
      * @param name
      * @return
      */
-    public Demo add(String id, String name);
+    public Demo add(String id, String name, Demo.DemoStatus status);
 
     /**
      * 修改记录
@@ -43,5 +43,5 @@ public interface DemoService {
      * @param name
      * @return
      */
-    public Demo update(String id, String name);
+    public Demo update(String id, String name, Demo.DemoStatus status);
 }
