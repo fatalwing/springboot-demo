@@ -1,1 +1,1 @@
-{"errorCode":"api_not_exists","errorInfo":"访问的接口不存在！","data":""}
+{"status":200,"error":"api_not_exists","message":"访问的接口不存在！","timestamp":0,"data":""}

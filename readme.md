@@ -8,10 +8,14 @@ src
  |   +- java
  |   |   +- com
  |   |       +- townmc
- |   |           +- demo
- |   |               +- Application.java  // springboot入口类
+ |   |           +- boot
+ |   |               +- BootApplication.java  // springboot入口类
+ |   |               |
+ |   |               +- component // 相关组件
  |   |               |
  |   |               +- configuration // springboot配置文件目录
+ |   |               |
+ |   |               +- constants // 系统中使用的常量定义
  |   |               |
  |   |               +- controller // http请求控制器代码
  |   |               |
@@ -29,56 +33,96 @@ src
  |   |               +- web // 网络请求相关定义,拦截器错误处理等
  |   |               |
  |   +- resources // 配置文件资源文件
- |   |   +- application-dev.yml // 开发环境配置
- |   |   |
- |   |   +- application-product.yml // 生产环境配置
  +- test // 测试代码
      +- java
      |
      +- resources
 ```
 
-## 编译打包启动
-在项目根目录下运行maven打包命令  
+## 项目的部署  
+### 项目需要的环境和资源  
+1. jdk1.8  
+2. mysql5.7
+3. redis4.0+
+4. rabbitmq  
+
+### 数据库
+项目最好独立建数据库以免表名冲突  
+数据库脚本请见doc下的`database.sql`  
+
+### 项目配置文件
+配置文件的sample在doc下`application.yml`  
+主要修改如下几处：  
+1. 端口号   
+```
+server:
+  port: 8888
+```
+服务将使用该配置的端口号启动  
+
+2. 数据库连接   
+```
+    datasource:
+        url: jdbc:mysql://59.110.6.168:3306/lianwu?useUnicode=true&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+        username: root
+        password: Dianka0522
+```
+修改成创建的数据库地址  
+
+3. redis配置  
+```
+    redis:
+        host: 59.110.6.168
+        password: Xiangongshe0522
+        port: 6379
+        database: 6
+        timeout: 1000
+```
+修改成对应的redis配置参数     
+
+4. rabbitmq配置  
+```
+    rabbitmq:
+        host: 123.56.1.184
+        port: 5672
+        username: hxf
+        password: hxf
+        virtual-host: /hxf
+```
+修改成对应的rabbitmq配置参数  
+
+### 编译打包
+在项目源代码根目录下运行maven打包命令  
+
+> 项目中可能有test依赖特定的测试环境，因此运行命令时务必用`-Dmaven.test.skip=true`命令将测试忽略
+
 ```
 mvn clean package -Dmaven.test.skip=true
 ```
-在target下会生成jar包，名字根据为pom中定义产生，artifactId-version.jar  
-可以指定对应环境(product/dev)的配置文件运行jar包并输出控制台打印：  
-```
-nohup java -jar artifactId-version.jar --spring.profiles.active=product >> console.log 2>&1 &
 
-## dao层规范
-### 基本操作使用Jpa方式处理
-```
-public interface JpaDao extends JpaRepository<Demo, String> {
-}
-```
-这种方式不需要做具体的实现即可完成基本的CRUD，简单、不容易出错。  
+在target下会生成jar包：`sb-demo.jar`   
 
-### 复杂操作使用Sql处理
-定义好接口后，在impl包中做实现，直接使用JdbcTemplate查询。操作接口自行参照JdbcTemplate文档。  
-```
-@Repository
-public class SqlDaoImpl implements SqlDao {
-    @Autowired private JdbcTemplate jdbcTemplate;
-    
-    public Object xxx() {
-    
-    }
-}
-```
-这种方式主要用于处理不得已的多表关联查询和一些特殊的sql处理，查询灵活但容易出现bug，需要谨慎。尽量不要用于增删改。
+### 运行  
+将`sb-demo.jar`和配置文件`application.yml`放在同一个目录下。   
 
-### 临时数据使用redis存储
-根据数据定义好接口，在impl包中做实现，使用RedisTemplate操作redis。操作接口自行参照RedisTemplate文档。  
+用如下命令即可启动服务：   
 ```
-@Component
-public class RedisDaoImpl implements RedisDao {
-    @Autowired private RedisTemplate redisTemplate;
+nohup java -Xms512m -Xmx1g -Xmn512m -server -jar lianwu-file.jar >> console.log 2>&1 &
+```
+可以根据需要配置内存的大小。  
 
-    public Object xxx() {
-    
-    }
-}
+查看服务log  
+```
+tail -f -n 200 console.log
+```
+
+如果在日志中能看到大概如下信息表示启动没有错误  
+```
+Tomcat started on port(s): 6002 (http) with context path ''
+Started Application in 5.443 seconds (JVM running for 6.15)
+```
+
+同时用如下命令可查看到进程信息  
+```
+ps -ef|grep 'lianwu-file'
 ```

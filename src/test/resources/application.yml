@@ -1,34 +1,80 @@
 server:
-    port: 40000
-    tomcat:
-        uri-encoding: utf-8
+    port: 9300
+eureka:
+    instance:
+        lease-renewal-interval-in-seconds: 5
+        lease-expiration-duration-in-seconds: 10
+    client:
+        fetch-registry: false
+        register-with-eureka: false
+        registry-fetch-interval-seconds: 5
+        service-url:
+            defaultZone: http://localhost:7788/eureka/
 spring:
+    application:
+        name: service-trade
     datasource:
-        url: jdbc:mysql://localhost/test?useUnicode=true&serverTimezone=UTC&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+        url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
         username: root
-        password:
+        password: 123456
         driver-class-name: com.mysql.cj.jdbc.Driver
         type: com.zaxxer.hikari.HikariDataSource
         hikari:
             idle-timeout: 30000
             minimum-idle: 5
             maximum-pool-size: 15
-            pool-name: DemoHikariCP
+            pool-name: HongbaobabaHikariCP
             max-lifetime: 1800000
             connection-timeout: 30000
+            connection-test-query: SELECT 1
+            connection-init-sql: set names utf8mb4
+            validation-timeout: 5000
     jpa:
         show-sql: true
         database: mysql
     redis:
-        host: localhost
+        host: 127.0.0.1
         password: 123456
         port: 6379
+        database: 6
+        timeout: 1000
+    rabbitmq:
+        host: 127.0.0.1
+        port: 5672
+        username: abc
+        password: 123456
+        virtual-host: /msg
+    mail:
+        host: smtp.exmail.qq.com
+        username: sender@example.com
+        password: 123456
+        default-encoding: UTF-8
+        properties:
+            mail:
+                smtp:
+                    ssl:
+                        enable: true
+                    auth: true
+                    starttls:
+                        enable: true
+                        required: true
     jackson:
         time-zone: GMT+8
         date-format: yyyy-MM-dd HH:mm:ss
         joda-date-time-format: yyyy-MM-dd HH:mm:ss
 logging:
     level:
-        org.hibernate.SQL: DEBUG
-        org.hibernate.type.descriptor.sql.BasicBinder: TRACE
-        com.townmc: debug
+        root: INFO
+        com.townmc: DEBUG
+scheduling:
+    enabled:
+        demo: false
+
+## 测试环境
+ribbon:
+    # 负载均衡不使用eureka
+    eureka:
+        enabled: false
+    # 关闭断路器
+    hystrix:
+        enabled: false
