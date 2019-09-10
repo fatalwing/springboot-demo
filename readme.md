@@ -63,17 +63,17 @@ server:
 2. 数据库连接   
 ```
     datasource:
-        url: jdbc:mysql://59.110.6.168:3306/lianwu?useUnicode=true&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+        url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
         username: root
-        password: Dianka0522
+        password: 123456
 ```
 修改成创建的数据库地址  
 
 3. redis配置  
 ```
     redis:
-        host: 59.110.6.168
-        password: Xiangongshe0522
+        host: 123456
+        password: 123456
         port: 6379
         database: 6
         timeout: 1000
@@ -83,11 +83,11 @@ server:
 4. rabbitmq配置  
 ```
     rabbitmq:
-        host: 123.56.1.184
+        host: 123456
         port: 5672
-        username: hxf
-        password: hxf
-        virtual-host: /hxf
+        username: abc
+        password: 123456
+        virtual-host: /msg
 ```
 修改成对应的rabbitmq配置参数  
 
