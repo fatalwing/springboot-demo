@@ -1,5 +1,6 @@
 package com.townmc.boot.utils.annotations;
 
+import com.townmc.boot.enums.Handler;
 import org.springframework.core.annotation.AliasFor;
 
 import java.lang.annotation.*;
@@ -12,14 +13,14 @@ import java.lang.annotation.*;
 @Documented
 public @interface AccessToken {
     @AliasFor("handler")
-    String value() default "";
+    Handler value() default Handler.DEFAULT;
 
     /**
      * Token的Handler名称
      * @return
      */
     @AliasFor("value")
-    String handler() default "";
+    Handler handler() default Handler.DEFAULT;
 
     /**
      * 通过tag来传递一些信息用于自己实现特殊权限控制逻辑

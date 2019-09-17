@@ -1,5 +1,6 @@
 package com.townmc.boot.web;
 
+import com.townmc.boot.enums.Handler;
 import com.townmc.boot.utils.annotations.AccessToken;
 import com.townmc.boot.constants.SystemConstants;
 import com.townmc.boot.utils.LogicException;
@@ -29,8 +30,8 @@ public class AccessTokenArgumentResolver implements HandlerMethodArgumentResolve
 
         String accessToken = nativeWebRequest.getHeader(SystemConstants.AUTHORIZATION_KEY);
         AccessToken tokenAnno = methodParameter.getParameterAnnotation(AccessToken.class);
-        String name = tokenAnno.value();
-        TokenHandler handler = (TokenHandler) SpringUtil.getBean(name);
+        Handler name = tokenAnno.value();
+        TokenHandler handler = (TokenHandler) SpringUtil.getBean(name.toString());
 
         if (null == handler) {
             throw new LogicException("token_handler_not_exists", "名字为" + name + "的tokenHandler没有实现，请联系客服");
