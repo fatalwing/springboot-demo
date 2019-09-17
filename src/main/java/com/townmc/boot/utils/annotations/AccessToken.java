@@ -1,6 +1,6 @@
 package com.townmc.boot.utils.annotations;
 
-import com.townmc.boot.enums.Handler;
+import com.townmc.boot.domain.enums.Handler;
 import org.springframework.core.annotation.AliasFor;
 
 import java.lang.annotation.*;
