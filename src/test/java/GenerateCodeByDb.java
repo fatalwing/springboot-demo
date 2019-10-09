@@ -157,7 +157,7 @@ public class GenerateCodeByDb {
         String packageName = "package " + DAO_PACKAGE + ";\n";
 
         String importPackage = "" +
-                "import com.lianwuzizai.operation.domain.po." + objectName + ";\n" +
+                "import " + PO_PACKAGE + "." + objectName + ";\n" +
                 "import org.springframework.data.jpa.repository.JpaRepository;\n";
 
         String str = "";
