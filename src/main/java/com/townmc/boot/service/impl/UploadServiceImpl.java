@@ -30,7 +30,7 @@ public class UploadServiceImpl implements UploadService {
 
         Http http = new Http();
         http.setTimeout(10000, 10000, 10000);
-        String fileId = http.post("http://pic-src.xxx.com/file/oss_upload.do", JsonUtil.object2Json(params));
+        String fileId = http.post("http://pic-src.xxx.com/file/oss_upload.do", JsonUtil.object2Json(params)).toString();
         return fileId;
 
     }
@@ -49,7 +49,7 @@ public class UploadServiceImpl implements UploadService {
 
         Http http = new Http();
         http.setTimeout(10000, 10000, 10000);
-        String fileId = http.post("http://pic-src.xxx.com/file/oss_upload.do", JsonUtil.object2Json(params));
+        String fileId = http.post("http://pic-src.xxx.com/file/oss_upload.do", JsonUtil.object2Json(params)).toString();
         return fileId;
     }
 }

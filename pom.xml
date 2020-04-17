@@ -110,13 +110,13 @@
 
         <dependency>
             <groupId>com.townmc</groupId>
-            <artifactId>utils</artifactId>
-            <version>2.11</version>
+            <artifactId>townmc-utils</artifactId>
+            <version>3.4</version>
         </dependency>
         <dependency>
             <groupId>com.townmc</groupId>
-            <artifactId>mp</artifactId>
-            <version>3.23</version>
+            <artifactId>townmc-mp</artifactId>
+            <version>3.25</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -152,38 +152,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <repositories>
-        <repository>
-            <id>maven-diankayi-net</id>
-            <name>Maven Diankayi Mirror</name>
-            <url>http://59.110.6.168:8081/repository/maven-public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>maven-diankayi-net</id>
-            <name>Maven Diankayi Mirror</name>
-            <url>http://59.110.6.168:8081/repository/maven-public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
 
     <build>
         <finalName>sb-demo</finalName>

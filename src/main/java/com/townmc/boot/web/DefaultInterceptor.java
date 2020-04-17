@@ -38,7 +38,7 @@ public class DefaultInterceptor implements HandlerInterceptor {
 
                 AccessToken accessTokenAnnotation = handlerMethod.getMethodAnnotation(AccessToken.class);
 
-                String name = accessTokenAnnotation.value();
+                String name = accessTokenAnnotation.value().name();
                 TokenHandler tokenHandler = (TokenHandler) SpringUtil.getBean(name);
                 tokenHandler.getObjectByToken(accessToken, accessRequest);
 

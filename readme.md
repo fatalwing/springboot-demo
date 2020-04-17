@@ -107,7 +107,7 @@ mvn clean package -Dmaven.test.skip=true
 
 用如下命令即可启动服务：   
 ```
-nohup java -Xms512m -Xmx1g -Xmn512m -server -jar lianwu-file.jar >> console.log 2>&1 &
+nohup java -Xms512m -Xmx1g -Xmn512m -server -jar sb-demo.jar >> console.log 2>&1 &
 ```
 可以根据需要配置内存的大小。  
 
@@ -124,5 +124,5 @@ Started Application in 5.443 seconds (JVM running for 6.15)
 
 同时用如下命令可查看到进程信息  
 ```
-ps -ef|grep 'lianwu-file'
+ps -ef|grep 'sb-demo'
 ```
