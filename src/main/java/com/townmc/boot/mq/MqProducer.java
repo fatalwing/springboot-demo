@@ -17,7 +17,7 @@ public class MqProducer {
      * @param demo
      */
     public void demo(Demo demo) {
-        template.convertAndSend("sendEmailMsg", JsonUtil.object2Json(demo));
+        template.convertAndSend("demo", JsonUtil.object2Json(demo));
     }
 
 }

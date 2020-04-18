@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import springfox.documentation.annotations.ApiIgnore;
 
 @ApiIgnore
-@Controller
+@Controller("mainController")
 @RequestMapping(value = "/main")
 @Slf4j
 public class MainController {
 
     @RequestMapping("/index.htm")
     public String index() {
-        return "/index";
+        return "/_demo_/index";
     }
 
 }

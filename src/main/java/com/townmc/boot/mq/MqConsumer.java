@@ -12,7 +12,7 @@ public class MqConsumer {
      * 发送队列中的邮件
      * @param str
      */
-    @RabbitListener(queues="sendEmailMsg")    //监听器监听指定的Queue
+    @RabbitListener(queues="demo")    //监听器监听指定的Queue
     public void demo(String str) {
         log.info("=== create user success. ");
     }

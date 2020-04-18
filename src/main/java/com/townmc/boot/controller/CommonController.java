@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
-@RestController("hxfCommon")
+@RestController("commonController")
 @RequestMapping(value = "/common")
 @Slf4j
 public class CommonController {
