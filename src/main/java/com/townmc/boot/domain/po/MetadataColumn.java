@@ -13,7 +13,7 @@ import java.util.Date;
  * 所有表都包含的列
  */
 @MappedSuperclass
-public class CommonColumn {
+public class MetadataColumn {
 
     /**
      * 用于乐观锁
