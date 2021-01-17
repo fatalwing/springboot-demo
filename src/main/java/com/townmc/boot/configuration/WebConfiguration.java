@@ -36,7 +36,7 @@ public class WebConfiguration implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("*")
+                .allowedOriginPatterns("*")
                 .allowedHeaders("Content-Type", "Accept", "X-Requested-With", "Access-Token", "Session-Id")
                 .maxAge(3600L)
                 .allowCredentials(true)
