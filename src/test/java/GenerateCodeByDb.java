@@ -114,7 +114,7 @@ public class GenerateCodeByDb {
                 "@AllArgsConstructor \n" +
                 "@NoArgsConstructor \n" +
                 "@Entity \n";
-        str += "public class " + this._2Hump(tableName, true) + " extends CommonColumn { \n\n";
+        str += "public class " + this._2Hump(tableName, true) + " extends MetadataColumn { \n\n";
         for (Map<String, Object> col : cols) {
 
             String columnName = (String)col.get("COLUMN_NAME");
