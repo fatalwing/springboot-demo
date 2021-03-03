@@ -1,6 +1,6 @@
 package com.townmc.boot.utils;
 
-import com.alibaba.fastjson.JSON;
+import com.townmc.utils.JsonUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,7 +48,7 @@ public class MapBuilder<T> {
     public static void main(String[] args) {
         MapBuilder<String> build = new MapBuilder.Builder<String>().map("a", "b").map("c", "d").build();
         System.out.println(build.get("a"));
-        System.out.println(JSON.toJSON(build.map()));
+        System.out.println(JsonUtil.object2Json(build));
     }
 
 }

@@ -8,6 +8,9 @@ import org.springframework.util.unit.DataUnit;
 
 import javax.servlet.MultipartConfigElement;
 
+/**
+ * @author meng
+ */
 @Configuration
 public class MultipartConfig {
     @Bean

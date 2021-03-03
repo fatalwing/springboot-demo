@@ -11,6 +11,9 @@ import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author meng
+ */
 @Aspect
 @Component
 public class RetryOnOptimisticLockingAspect {
@@ -37,7 +40,7 @@ public class RetryOnOptimisticLockingAspect {
                 }
 
             }
-        }while (numAttempts < this.maxRetries);
+        }while (numAttempts < maxRetries);
         return null;
     }
 

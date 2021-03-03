@@ -1,8 +1,8 @@
 package com.townmc.boot.web;
 
-import com.townmc.boot.utils.ApiResponse;
 import com.townmc.boot.utils.LogicException;
 import com.townmc.utils.JsonUtil;
+import com.townmc.utils.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -45,7 +45,7 @@ public class DefaultExceptionHandler {
         }
 
         if(req.getServletPath().endsWith(".json")) {
-            return JsonUtil.object2Json(ApiResponse.fail(errorCode, errorInfo));
+            return JsonUtil.object2Json(Result.fail(errorCode, errorInfo));
         } else {
             return "<!DOCTYPE html><html><body>" + errorCode + ":" + errorInfo + "</body></html>";
         }

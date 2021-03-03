@@ -1,5 +1,6 @@
 server:
     port: 9300
+dev-server: 192.168.12.2
 eureka:
     instance:
         lease-renewal-interval-in-seconds: 5
@@ -14,9 +15,9 @@ spring:
     application:
         name: service-trade
     datasource:
-        url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
-        username: root
-        password: 123456
+        url: jdbc:mysql://${dev-server}:3306/demo?useUnicode=true&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+        username: demo
+        password: Demo#123456
         driver-class-name: com.mysql.cj.jdbc.Driver
         type: com.zaxxer.hikari.HikariDataSource
         hikari:
@@ -33,35 +34,43 @@ spring:
         show-sql: true
         database: mysql
     redis:
-        host: 127.0.0.1
-        password: 123456
+        host: ${dev-server}
+        password: admin123456
         port: 6379
         database: 6
         timeout: 1000
     rabbitmq:
-        host: 127.0.0.1
+        host: ${dev-server}
         port: 5672
-        username: abc
-        password: 123456
-        virtual-host: /msg
-    mail:
-        host: smtp.exmail.qq.com
-        username: sender@example.com
-        password: 123456
-        default-encoding: UTF-8
-        properties:
-            mail:
-                smtp:
-                    ssl:
-                        enable: true
-                    auth: true
-                    starttls:
-                        enable: true
-                        required: true
+        username: dev
+        password: dev
+        virtual-host: /dev
+# 需要做邮件发送是配置
+#    mail:
+#        host: smtp.exmail.qq.com
+#        username: sender@example.com
+#        password: 123456
+#        default-encoding: UTF-8
+#        properties:
+#            mail:
+#                smtp:
+#                    ssl:
+#                        enable: true
+#                    auth: true
+#                    starttls:
+#                        enable: true
+#                        required: true
     jackson:
         time-zone: GMT+8
         date-format: yyyy-MM-dd HH:mm:ss
-        joda-date-time-format: yyyy-MM-dd HH:mm:ss
+mybatis:
+    #mapper配置文件
+    mapper-locations: classpath:com/townmc/boot/dao/mybatis/*.xml
+    #开启驼峰命名
+    configuration:
+        map-underscore-to-camel-case: true
+pagehelper:
+    helper-dialect: mysql
 logging:
     level:
         root: INFO

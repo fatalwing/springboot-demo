@@ -19,6 +19,9 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.lang.reflect.Method;
 
+/**
+ * @author meng
+ */
 @Configuration
 @EnableCaching
 @Slf4j

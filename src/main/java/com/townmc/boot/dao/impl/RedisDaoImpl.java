@@ -1,8 +1,8 @@
 package com.townmc.boot.dao.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.townmc.boot.dao.RedisDao;
 import com.townmc.boot.domain.enums.CacheKeyPrefixEnum;
+import com.townmc.utils.JsonUtil;
 import com.townmc.utils.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,7 +79,7 @@ public class RedisDaoImpl implements RedisDao {
         }
         ValueOperations<Serializable, R> operations = redisTemplate.opsForValue();
         R r = operations.get(key);
-        log.info("get cache：key{},value{}", key, JSON.toJSON(r));
+        log.info("get cache：key{},value{}", key, JsonUtil.object2Json(r));
         if (r == null) {
             r = function.apply((T) key);
             operations.set(key, r);

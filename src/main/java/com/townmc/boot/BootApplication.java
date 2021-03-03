@@ -8,6 +8,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Repository;
 
+/**
+ * @author meng
+ */
 @SpringBootApplication
 @EnableFeignClients
 @EnableCaching

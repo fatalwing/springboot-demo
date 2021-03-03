@@ -8,6 +8,16 @@ public class SystemConstants {
 
     public static final String MIX_CODE = "townmc@2019";
 
+    /**
+     * 数据库数据删除状态
+     */
+    public static final int DELETED = 1;
+
+    /**
+     * 数据库数据未删除状态
+     */
+    public static final int UN_DELETED = 0;
+
     public static final BigDecimal ZERO = new BigDecimal("0");
 
     public static final BigDecimal HUNDRED = new BigDecimal("100");

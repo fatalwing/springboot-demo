@@ -1,7 +1,6 @@
 package com.townmc.boot.component;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -12,11 +11,16 @@ import javax.persistence.EntityManager;
 
 /**
  * 定时处理任务
+ * @author meng
  */
 @Slf4j
 @Component
 public class ScheduledService {
-    @Autowired private EntityManager entityManager;
+    private final EntityManager entityManager;
+
+    public ScheduledService(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
 
     @Value("${scheduling.enabled.demo}")
     private Boolean enabledDemo;
@@ -26,9 +30,11 @@ public class ScheduledService {
      */
     @Async
     @Scheduled(cron="0 5 0 * * ?")
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public void demo() {
-        if (!enabledDemo) return;
+        if (!enabledDemo) {
+            return;
+        }
 
     }
 }

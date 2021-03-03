@@ -11,9 +11,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
 
+import static com.townmc.boot.constants.SystemConstants.AUTHORIZATION_KEY;
+
 /**
  * 加载配置web相关
  * 拦截器、跨域访问等等
+ * @author meng
  */
 @Configuration
 public class WebConfiguration implements WebMvcConfigurer {
@@ -37,7 +40,7 @@ public class WebConfiguration implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOriginPatterns("*")
-                .allowedHeaders("Content-Type", "Accept", "X-Requested-With", "Access-Token", "Session-Id")
+                .allowedHeaders("Content-Type", "Accept", "X-Requested-With", "Access-Token", "Session-Id", AUTHORIZATION_KEY)
                 .maxAge(3600L)
                 .allowCredentials(true)
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
