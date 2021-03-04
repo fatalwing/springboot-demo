@@ -1,6 +1,5 @@
 package com.townmc.boot.service;
 
-import com.github.pagehelper.PageInfo;
 import com.townmc.utils.JsonUtil;
 import com.townmc.utils.PageWrapper;
 import lombok.extern.slf4j.Slf4j;

@@ -2,7 +2,10 @@
 典型maven项目和springboot目录结构  
 ```
 doc
- |
+ +- database.sql 数据库和用户的创建脚本
+ +- ddl.sql 表的定义脚本
+ +- dml.sql 数据库初始化数据脚本
+ +- upgrade.sql 产品迭代过程中的数据库表更新脚本
 src
  +- main
  |   +- java
@@ -19,16 +22,24 @@ src
  |   |               |
  |   |               +- controller // http请求控制器代码
  |   |               |
- |   |               +- dao // 持久化层代码
- |   |               |
+ |   |               +- dao // 持久化层代码 主要是JPA和mybatis，详见数据库文档
+ |   |               |   |
+ |   |               |   +- impl redis和基本sql的实现
+ |   |               |   |
+ |   |               |   +- mybatis
+ |   |               | 
  |   |               +- domain // 实体bean代码
  |   |               |   |
  |   |               |   +- bo // 业务描述或在service间传递的实体定义
  |   |               |   |
  |   |               |   +- dto // 数据传输实体定义，包括业务与页面之间的参数传递
  |   |               |   |
- |   |               |   +- po  // 数据库对应实体定义
+ |   |               |   +- enums // 枚举实体的定义
  |   |               |   |
+ |   |               |   +- po  // 数据库对应实体定义
+ |   |               |  
+ |   |               +- mq // 队列业务逻辑
+ |   |               |  
  |   |               +- service // 业务逻辑层代码
  |   |               |
  |   |               +- utils // 帮助类
@@ -49,9 +60,40 @@ src
 3. redis4.0+
 4. rabbitmq  
 
-### 数据库
-项目最好独立建数据库以免表名冲突  
-数据库脚本请见doc下的`database.sql`  
+### 数据库文档
+数据库在设计上尽量避免需要多表关联的情况（可以做部分数据冗余）。  
+每个表都必须有四个元数据（说明数据自身的数据）字段：  
+`version`、`date_created`、`last_updated`、`deleted`  
+
+数据库脚本放在doc下：`database.sql` 、`ddl.sql`、`dml.sql`、`upgrade.sql`       
+
+项目中同时使用JPA和MyBatis两个持久化框架。  
+> __约定：__  
+> JPA用于insert、update、insert和update之前的校验查询，以及一些访问不频繁的单表查询；  
+> MyBatis用于复杂多表关联查询和高频查询。      
+> 便于将来迅速做读写分离（将Mybatis数据源配置为读库即可）。  
+
+- JPA的接口直接写在dao包下  
+- Mybatis的接口和xml写在dao.mybatis包下，  
+    > 接口和xml均用`表名`(下划线转为大驼峰)+`Mapper`，  
+      例如`user_info`表，对应的mapper接口名为： `UserInfoMapper.java`.  
+      对应的sql定义文件名则为`UserInfoMapper.xml`。 
+
+### JPA和Mybatis代码自动生成
+创建好数据库表之后，可以根据表自动生成对应的持久化代码
+#### JPA
+JPA持久化需要一个实体PO（在domain的po下）和一个继承了JpaRepository的接口。  
+在`test/java`下有一个`GenerateCodeByDb`类，可用于生成JPA需要的jpa接口和数据库实体类。  
+配置好该类的包路径以及数据库访问口令，需要生成的目标table，运行main函数即可。  
+
+#### MyBatis
+MyBatis持久化需要一个实体PO、一个接口和一个对应的xml文件。  
+配置好`src/main/resources`下的`generatorConfig.xml`(配置文件的注释可以参考doc下的该文件)。  
+
+运行`mvn mybatis-generator:generate`会将配置文件中定义的`<table>`全部生成。因为实体PO统一使用JPA生成的对象，
+因此这里会有重复生成的实体类，需要将其删除。  
+生成的接口和sqlmap xml可以选择使用。  
+_生成的接口需要加上`@Repository`标注，以供springboot进行对象自动注入。_  
 
 ### 项目配置文件
 配置文件的sample在doc下`application.yml`  
