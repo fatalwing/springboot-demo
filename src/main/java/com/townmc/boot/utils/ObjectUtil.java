@@ -18,10 +18,12 @@ public class ObjectUtil {
         final BeanWrapper src = new BeanWrapperImpl(source);
         java.beans.PropertyDescriptor[] pds = src.getPropertyDescriptors();
 
-        Set<String> emptyNames = new HashSet<String>();
+        Set<String> emptyNames = new HashSet<>();
         for(java.beans.PropertyDescriptor pd : pds) {
             Object srcValue = src.getPropertyValue(pd.getName());
-            if (srcValue == null) emptyNames.add(pd.getName());
+            if (srcValue == null) {
+                emptyNames.add(pd.getName());
+            }
         }
         String[] result = new String[emptyNames.size()];
         return emptyNames.toArray(result);
@@ -29,7 +31,9 @@ public class ObjectUtil {
 
     public static boolean contain(Object[] arr, Object obj) {
         for (Object o : arr) {
-            if (o == obj) return true;
+            if (o == obj) {
+                return true;
+            }
             if (o.equals(obj)) {
                 return true;
             }
