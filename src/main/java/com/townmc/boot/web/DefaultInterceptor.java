@@ -4,7 +4,6 @@ import com.townmc.boot.utils.EnumerationIter;
 import com.townmc.boot.utils.SpringUtil;
 import com.townmc.boot.constants.SystemConstants;
 import com.townmc.boot.utils.annotations.AccessToken;
-import com.townmc.utils.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -17,6 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
 import java.util.*;
 
+/**
+ * @author meng
+ */
 @Slf4j
 @Component
 public class DefaultInterceptor implements HandlerInterceptor {

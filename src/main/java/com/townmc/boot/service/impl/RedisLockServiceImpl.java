@@ -41,6 +41,7 @@ public class RedisLockServiceImpl implements LockService {
      * @param lock 等待上锁的对象
      * @return true/false
      */
+    @Override
     public boolean tryLock(Object lock) {
         return tryLock(lock, timeout, tryInterval, lockExpireTime);
     }
@@ -52,6 +53,7 @@ public class RedisLockServiceImpl implements LockService {
      * @param timeout 尝试获取锁的超时时间 单位：毫秒
      * @return true/false
      */
+    @Override
     public boolean tryLock(Object lock, long timeout) {
         return tryLock(lock, timeout, lockExpireTime);
     }
@@ -64,6 +66,7 @@ public class RedisLockServiceImpl implements LockService {
      * @param tryInterval 多少ms尝试获取一次锁 单位：毫秒
      * @return true/false
      */
+    @Override
     public boolean tryLock(Object lock, long timeout, long tryInterval) {
         return tryLock(lock, timeout, tryInterval, lockExpireTime);
     }
@@ -79,6 +82,7 @@ public class RedisLockServiceImpl implements LockService {
      *
      * @see ValueOperations#setIfAbsent(Object, Object)
      */
+    @Override
     public boolean tryLock(Object lock, long timeout, long tryInterval, long lockExpireTime) {
         String key = serializable(lock);
 
@@ -144,8 +148,8 @@ public class RedisLockServiceImpl implements LockService {
      *
      * @param lock 等待释放锁的对象
      *
-     * @see StringRedisTemplate#delete(Object)
      */
+    @Override
     public void release(Object lock) {
         String key = serializable(lock);
         ValueOperations<String, String> ops = redisTemplate.opsForValue();

@@ -95,6 +95,27 @@ MyBatis持久化需要一个实体PO、一个接口和一个对应的xml文件�
 生成的接口和sqlmap xml可以选择使用。  
 _生成的接口需要加上`@Repository`标注，以供springboot进行对象自动注入。_  
 
+### 图片验证码
+当需要防止机器人登录或者注册的时候就需要用到图片验证码，图片验证码使用`com.google.code.kaptcha`包来生成图片，使用方法如下：  
+1. 前端通过调用`/common/get-valid-image`接口，将获得如下返回：  
+```
+{
+  "status": 200,
+  "error": "0",
+  "message": "",
+  "timestamp": 1615212658241,
+  "data": {
+    "imageValidKey": "ba39a1d648e64871878dff51ee282ed6",
+    "imageContent": "data:image/jpg;base64,/9j/4AAQSkZJRgA...=="
+  }
+}
+```
+`imageContent`可用于`<img>`标签的`src`属性，用户可看到一张带有混淆效果的4位字符。  
+2. 前端获取用户输入的图片验证码值，
+与上一步获得的`imageValidKey`一起作为参数调用`/common/get-image-valid-token?imageValidKey=xxx&imageValidCode=xxx`接口,
+(xxx替换为实际值)，如果验证通过，得到的结果值为图片验证通过凭证，可以在具体的业务接口中作为值传递。  
+验证凭证需要在1分钟內使用，否则将会失效。  
+
 ### 项目配置文件
 配置文件的sample在doc下`application.yml`  
 主要修改如下几处：  

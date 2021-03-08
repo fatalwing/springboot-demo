@@ -2,7 +2,7 @@ package com.townmc.boot.dao.impl;
 
 import com.townmc.boot.dao.SqlDao;
 import com.townmc.boot.domain.po.Demo;
-import com.townmc.boot.utils.LogicException;
+import com.townmc.utils.LogicException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -10,6 +10,9 @@ import org.springframework.stereotype.Repository;
 import java.util.Date;
 import java.util.Map;
 
+/**
+ * @author meng
+ */
 @Repository
 public class SqlDaoImpl implements SqlDao {
     @Autowired

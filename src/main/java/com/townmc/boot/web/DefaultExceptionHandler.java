@@ -1,7 +1,7 @@
 package com.townmc.boot.web;
 
-import com.townmc.boot.utils.LogicException;
 import com.townmc.utils.JsonUtil;
+import com.townmc.utils.LogicException;
 import com.townmc.utils.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+/**
+ * @author meng
+ */
 @ControllerAdvice
 @Slf4j
 public class DefaultExceptionHandler {
@@ -44,10 +48,12 @@ public class DefaultExceptionHandler {
             log.error("not logic exception", e);
         }
 
-        if(req.getServletPath().endsWith(".json")) {
-            return JsonUtil.object2Json(Result.fail(errorCode, errorInfo));
-        } else {
+        String contentType = req.getHeader("Content-Type");
+        log.info("====== {}", req.getRequestURI());
+        if(null != contentType && contentType.contains("text")) {
             return "<!DOCTYPE html><html><body>" + errorCode + ":" + errorInfo + "</body></html>";
+        } else {
+            return JsonUtil.object2Json(Result.fail(errorCode, errorInfo));
         }
 
     }
