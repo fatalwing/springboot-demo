@@ -4,7 +4,6 @@ import com.townmc.boot.domain.enums.Handler;
 import com.townmc.boot.utils.annotations.AccessToken;
 import com.townmc.boot.constants.SystemConstants;
 import com.townmc.boot.utils.LogicException;
-import com.townmc.utils.JsonUtil;
 import com.townmc.boot.utils.SpringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
@@ -40,7 +39,6 @@ public class AccessTokenArgumentResolver implements HandlerMethodArgumentResolve
             throw new LogicException("token_handler_not_exists", "名字为" + name + "的tokenHandler没有实现，请联系客服");
         }
 
-        log.debug("===== accessRequest: " + JsonUtil.object2Json(nativeWebRequest.getAttribute("accessRequest", 0)));
-        return handler.getObjectByToken(accessToken, (AccessRequest) nativeWebRequest.getAttribute("accessRequest", 0));
+        return handler.getObjectByToken(accessToken, nativeWebRequest);
     }
 }
