@@ -13,7 +13,7 @@ eureka:
             defaultZone: http://localhost:7788/eureka/
 spring:
     application:
-        name: service-trade
+        name: service-demo
     datasource:
         url: jdbc:mysql://${dev-server}:3306/demo?useUnicode=true&serverTimezone=GMT%2B8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
         username: demo
@@ -24,7 +24,7 @@ spring:
             idle-timeout: 30000
             minimum-idle: 5
             maximum-pool-size: 15
-            pool-name: HongbaobabaHikariCP
+            pool-name: TownmcHikariCP
             max-lifetime: 1800000
             connection-timeout: 30000
             connection-test-query: SELECT 1
