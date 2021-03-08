@@ -1,6 +1,6 @@
 server:
     port: 9300
-dev-server: 192.168.12.2
+dev-server: localhost
 eureka:
     instance:
         lease-renewal-interval-in-seconds: 5

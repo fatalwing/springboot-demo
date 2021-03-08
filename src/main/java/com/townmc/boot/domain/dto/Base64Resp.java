@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public
-class Base64Response {
+class Base64Resp {
     private String suffix;
     private String base64;
 }

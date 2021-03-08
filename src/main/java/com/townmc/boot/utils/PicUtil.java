@@ -1,6 +1,6 @@
 package com.townmc.boot.utils;
 
-import com.townmc.boot.domain.dto.Base64Response;
+import com.townmc.boot.domain.dto.Base64Resp;
 
 public class PicUtil {
 
@@ -23,7 +23,7 @@ public class PicUtil {
      * @param base64
      * @return
      */
-    public static Base64Response getBase64(String base64) {
+    public static Base64Resp getBase64(String base64) {
         String suffix = "jpg";
         base64 = base64.replaceAll("[\\s*\t\n\r]", "");
         if (base64.startsWith("data:")) {
@@ -31,7 +31,7 @@ public class PicUtil {
             base64 = arr[1];
             suffix = arr[0].split(";")[0].split("/")[1];
         }
-        return Base64Response.builder().base64(base64).suffix(suffix).build();
+        return Base64Resp.builder().base64(base64).suffix(suffix).build();
     }
 
 
