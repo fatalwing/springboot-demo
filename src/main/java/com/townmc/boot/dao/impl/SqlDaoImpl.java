@@ -1,8 +1,9 @@
 package com.townmc.boot.dao.impl;
 
 import com.townmc.boot.dao.SqlDao;
+import com.townmc.boot.domain.enums.Err;
 import com.townmc.boot.domain.po.Demo;
-import com.townmc.utils.LogicException;
+import com.townmc.boot.utils.BrokenException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -22,7 +23,7 @@ public class SqlDaoImpl implements SqlDao {
     public Demo findOne(String id) {
         Map<String, Object> re = jdbcTemplate.queryForMap("select * from app where id=?", new Object[]{id});
         if(null == re) {
-            throw new LogicException("object_not_exists", "查找的对象不存在");
+            throw new BrokenException(Err.NULL_OBJECT);
         }
         Demo demo = new Demo();
         demo.setId(id);

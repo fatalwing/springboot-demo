@@ -90,6 +90,16 @@
             <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
 
+        <!-- 分布式锁依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-integration</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-redis</artifactId>
+        </dependency>
+
         <!-- 二维码条形码生成工具 -->
         <dependency>
             <groupId>com.google.zxing</groupId>
@@ -143,15 +153,23 @@
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
 
-        <!--
-         常用工具类 日期、字符串、api接口返回等，
-         源码：https://github.com/fatalwing/utils
-         -->
+        <!-- json处理 -->
         <dependency>
-            <groupId>com.townmc</groupId>
-            <artifactId>townmc-utils</artifactId>
-            <version>3.6.1</version>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.75</version>
         </dependency>
+
+        <!--
+        https://hutool.cn/docs/#/
+        工具类库
+        -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.6.1</version>
+        </dependency>
+
         <!--
          微信交互接口封装
          源码：https://github.com/fatalwing/mp

@@ -1,8 +1,7 @@
 package com.townmc.boot.service;
 
-import com.github.pagehelper.PageInfo;
 import com.townmc.boot.domain.po.Demo;
-import com.townmc.utils.PageWrapper;
+import com.townmc.boot.utils.PageWrapper;
 
 /**
  * @author meng

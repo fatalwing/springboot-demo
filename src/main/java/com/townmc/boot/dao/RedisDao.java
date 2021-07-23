@@ -15,14 +15,14 @@ public interface RedisDao {
      * @param expireTime 过期时间，单位为秒
      * @return
      */
-    public boolean set(String key, Object value, Long expireTime);
+    boolean set(String key, Object value, Long expireTime);
 
     /**
      * redis取值
      * @param key 键
      * @return
      */
-    public Object get(String key);
+    Object get(String key);
 
     /**
      * key值在指定的时间内递增
@@ -30,7 +30,7 @@ public interface RedisDao {
      * @param expireSeconds 单位：秒
      * @return
      */
-    public long increment(String key, int expireSeconds);
+    long increment(String key, int expireSeconds);
 
     /**
      *获取缓存数据
@@ -40,7 +40,7 @@ public interface RedisDao {
      * @param <R>
      * @return
      */
-    public <T, R> R getCache(String key, Function<T, R> function);
+    <T, R> R getCache(String key, Function<T, R> function);
 
 
     /**

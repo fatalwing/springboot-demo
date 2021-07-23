@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface DemoJpaDao extends JpaRepository<Demo, String> {
 
-    public Demo findByIdAndDeleted(String id, int deleted);
+    Demo findByIdAndDeleted(String id, int deleted);
 }

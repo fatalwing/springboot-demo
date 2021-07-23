@@ -114,7 +114,7 @@ public class GenerateCodeByDb {
                 "@AllArgsConstructor \n" +
                 "@NoArgsConstructor \n" +
                 "@Entity \n";
-        str += "public class " + this._2Hump(tableName, true) + " extends MetadataColumn { \n\n";
+        str += "public class " + this._2Hump(tableName, true) + " extends MetaField { \n\n";
         for (Map<String, Object> col : cols) {
 
             String columnName = (String)col.get("COLUMN_NAME");
@@ -129,10 +129,13 @@ public class GenerateCodeByDb {
                 importPackage += "import java.math.BigDecimal;\n";
             }
 
+            str += "    /** \n";
+            str += "     * " + col.get("COLUMN_COMMENT") + " \n";
+            str += "     */\n";
             if ("PRI".equals(col.get("COLUMN_KEY"))) {
                 str += "    @Id\n";
             }
-            str += "    private " + type + " " + this._2Hump(columnName, false) + "; // " + col.get("COLUMN_COMMENT") + "  \n";
+            str += "    private " + type + " " + this._2Hump(columnName, false) + ";\n\n";
         }
         str += "\n} \n";
 

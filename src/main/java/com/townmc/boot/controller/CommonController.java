@@ -1,10 +1,11 @@
 package com.townmc.boot.controller;
 
 import com.townmc.boot.domain.dto.ValidImageResp;
+import com.townmc.boot.domain.enums.Err;
 import com.townmc.boot.service.ValidImageService;
 import com.townmc.boot.service.UploadService;
-import com.townmc.utils.LogicException;
-import com.townmc.utils.Result;
+import com.townmc.boot.utils.BrokenException;
+import com.townmc.boot.utils.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +31,7 @@ public class CommonController {
     @PostMapping("/uploadImage.json")
     public Result uploadImage(@RequestBody MultipartFile multipartFile) {
         if (null == multipartFile || multipartFile.isEmpty()) {
-            throw new LogicException("file_not_exists", "error.file_not_exists");
+            throw new BrokenException(Err.REQUIRED_PARAMETER);
         }
         String picId = "";
         try {
@@ -42,7 +43,7 @@ public class CommonController {
             e.printStackTrace();
             log.error("上传图片失败");
         }
-        return new Result(picId);
+        return Result.success(picId);
     }
 
     @ApiOperation("获得防刷验证图片")
@@ -51,12 +52,12 @@ public class CommonController {
 
         ValidImageResp data = validImageService.takeValidImage();
 
-        return new Result(data);
+        return Result.success(data);
     }
 
     @ApiOperation("防刷图片进行验证并换取验证token，换取到的token 1分钟內使用有效")
     @GetMapping("/get-image-valid-token")
     public Result<String> imageValidToken(String imageValidKey, String imageValidCode) {
-        return new Result(validImageService.takeValidToken(imageValidKey, imageValidCode));
+        return Result.success(validImageService.takeValidToken(imageValidKey, imageValidCode));
     }
 }

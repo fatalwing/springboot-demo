@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Demo extends MetadataColumn {
+public class Demo extends MetaField {
     @Id
     private String id;
     private String name;
