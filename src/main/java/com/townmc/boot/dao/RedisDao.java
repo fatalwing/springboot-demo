@@ -6,6 +6,7 @@ import java.util.function.Function;
 
 /**
  * 封装使用redis存储的数据访问
+ * @author meng
  */
 public interface RedisDao {
     /**
@@ -23,6 +24,13 @@ public interface RedisDao {
      * @return
      */
     Object get(String key);
+
+    /**
+     * 删除值
+     * @param key
+     * @return
+     */
+    boolean del(String key);
 
     /**
      * key值在指定的时间内递增

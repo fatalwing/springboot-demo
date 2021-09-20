@@ -1,7 +1,7 @@
 package com.townmc.boot.web;
 
-import com.townmc.boot.domain.enums.Err;
-import com.townmc.boot.domain.enums.Handler;
+import com.townmc.boot.model.enums.Err;
+import com.townmc.boot.model.enums.Handler;
 import com.townmc.boot.utils.BrokenException;
 import com.townmc.boot.utils.annotations.AccessToken;
 import com.townmc.boot.constants.SystemConstants;

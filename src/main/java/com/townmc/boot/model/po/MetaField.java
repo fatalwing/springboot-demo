@@ -1,4 +1,4 @@
-package com.townmc.boot.domain.po;
+package com.townmc.boot.model.po;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Generated;
@@ -11,6 +11,7 @@ import java.util.Date;
 
 /**
  * 所有表都包含的列
+ * @author meng
  */
 @MappedSuperclass
 public class MetaField {

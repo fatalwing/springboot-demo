@@ -1,7 +1,7 @@
 package com.townmc.boot.dao.impl;
 
 import com.townmc.boot.dao.RedisDao;
-import com.townmc.boot.domain.enums.CacheKeyPrefixEnum;
+import com.townmc.boot.model.enums.CacheKeyPrefixEnum;
 import com.townmc.utils.JsonUtil;
 import com.townmc.utils.StringUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -11,16 +11,19 @@ import org.springframework.data.redis.core.SetOperations;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.io.Serializable;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
+/**
+ * @author meng
+ */
 @Component
 @Slf4j
 public class RedisDaoImpl implements RedisDao {
-    @Autowired
-    private RedisTemplate redisTemplate;
+    @Resource private RedisTemplate redisTemplate;
 
     @Override
     public boolean set(String key, Object value, Long expireTime) {
@@ -45,10 +48,15 @@ public class RedisDaoImpl implements RedisDao {
     }
 
     @Override
+    public boolean del(String key) {
+        return redisTemplate.delete(key);
+    }
+
+    @Override
     public long increment(String key, int expireSeconds) {
         long count = redisTemplate.opsForValue().increment(key, 1);
         if(count == 1){
-            //设置有效期2秒
+            //设置有效期秒
             redisTemplate.expire(key, expireSeconds, TimeUnit.SECONDS);
             return count;
         }else{
@@ -100,6 +108,4 @@ public class RedisDaoImpl implements RedisDao {
         setOperations.add(key, (T[]) set.toArray());
         redisTemplate.expire(key, time, timeUnit);
     }
-
-
 }

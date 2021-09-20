@@ -1,6 +1,6 @@
 package com.townmc.boot.utils;
 
-import com.townmc.boot.domain.enums.Err;
+import com.townmc.boot.model.enums.Err;
 
 import java.util.function.Supplier;
 

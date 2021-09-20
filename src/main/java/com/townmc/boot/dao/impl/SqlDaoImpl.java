@@ -1,8 +1,8 @@
 package com.townmc.boot.dao.impl;
 
 import com.townmc.boot.dao.SqlDao;
-import com.townmc.boot.domain.enums.Err;
-import com.townmc.boot.domain.po.Demo;
+import com.townmc.boot.model.enums.Err;
+import com.townmc.boot.model.po.Demo;
 import com.townmc.boot.utils.BrokenException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

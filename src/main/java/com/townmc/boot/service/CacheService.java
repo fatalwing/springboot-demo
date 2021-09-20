@@ -15,6 +15,13 @@ public interface CacheService {
     boolean set(String key, Object value, Long expireTime);
 
     /**
+     * 删除值
+     * @param key
+     * @return
+     */
+    boolean del(String key);
+
+    /**
      * 取值
      * @param key 键
      * @return

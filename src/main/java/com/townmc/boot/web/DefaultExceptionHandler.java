@@ -1,6 +1,6 @@
 package com.townmc.boot.web;
 
-import com.townmc.boot.domain.enums.Err;
+import com.townmc.boot.model.enums.Err;
 import com.townmc.boot.utils.BrokenException;
 import com.townmc.boot.utils.Result;
 import com.townmc.utils.JsonUtil;

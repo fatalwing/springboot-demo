@@ -1,6 +1,6 @@
 package com.townmc.boot.mq;
 
-import com.townmc.boot.domain.po.Demo;
+import com.townmc.boot.model.po.Demo;
 import com.townmc.utils.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpTemplate;

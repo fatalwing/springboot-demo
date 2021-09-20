@@ -1,8 +1,8 @@
 package com.townmc.boot.service.impl;
 
 import com.google.code.kaptcha.Producer;
-import com.townmc.boot.domain.dto.ValidImageResp;
-import com.townmc.boot.domain.enums.Err;
+import com.townmc.boot.model.dto.ValidImageResp;
+import com.townmc.boot.model.enums.Err;
 import com.townmc.boot.service.CacheService;
 import com.townmc.boot.service.ValidImageService;
 import com.townmc.boot.utils.BrokenException;

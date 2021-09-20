@@ -1,4 +1,4 @@
-package com.townmc.boot.domain.enums;
+package com.townmc.boot.model.enums;
 
 /**
  * AccessToken的实现枚举

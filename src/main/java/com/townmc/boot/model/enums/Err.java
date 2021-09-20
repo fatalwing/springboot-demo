@@ -1,4 +1,4 @@
-package com.townmc.boot.domain.enums;
+package com.townmc.boot.model.enums;
 
 /**
  * 统一管理的异常错误

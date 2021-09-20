@@ -74,9 +74,13 @@ logging:
     level:
         root: INFO
         com.townmc: DEBUG
+swagger:
+    enable: true
+    test-auth: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJpc3MiLCJpZCI6IjEwMDAiLCJ0aW1lIjoiMTYzMTAwMzg0NyJ9.KuUPrxLD59Xs35GCFE4xlH30vQ4BN8mOzoQR99QnZrA
 scheduling:
     enabled:
         demo: false
+performance-stat: true
 ## 测试环境
 ribbon:
     # 负载均衡不使用eureka

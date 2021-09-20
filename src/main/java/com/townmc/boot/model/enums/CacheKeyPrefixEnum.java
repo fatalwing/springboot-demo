@@ -1,4 +1,4 @@
-package com.townmc.boot.domain.enums;
+package com.townmc.boot.model.enums;
 
 public enum CacheKeyPrefixEnum {
     MERCHANT_KEY("ME"), STORE_KEY("SH"), USER_KEY("10");

@@ -1,9 +1,7 @@
 package com.townmc.boot.dao;
 
-import com.townmc.boot.domain.po.Demo;
+import com.townmc.boot.model.po.Demo;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
 
 /**
  * Demo 数据库操作

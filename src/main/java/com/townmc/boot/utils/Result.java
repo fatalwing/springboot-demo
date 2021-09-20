@@ -1,7 +1,7 @@
 package com.townmc.boot.utils;
 
 import com.alibaba.fastjson.JSON;
-import com.townmc.boot.domain.enums.Err;
+import com.townmc.boot.model.enums.Err;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,7 @@
 package com.townmc.boot.configuration;
 
 import com.townmc.boot.constants.SystemConstants;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -27,12 +28,16 @@ public class Swagger2Configuration implements WebMvcConfigurer {
     private static final String BASE_PACKAGE = "com.townmc.boot";
     private static final String DOC_TITLE = "api文档";
     private static final String DOC_VERSION = "1.0.0";
+    @Value("${swagger.enable}")
+    private Boolean enable;
+    @Value("${swagger.test-auth}")
+    private String testAuth;
 
     @Bean
     public Docket initSwagger() {
         RequestParameterBuilder aParameterBuilder = new RequestParameterBuilder();
         aParameterBuilder.name(SystemConstants.AUTHORIZATION_KEY)
-                .query(q -> q.defaultValue(SystemConstants.DEBUG_TOKEN)
+                .query(q -> q.defaultValue(testAuth)
                         .model(modelSpecificationBuilder -> modelSpecificationBuilder.scalarModel(ScalarType.STRING)))
                 .in(ParameterType.HEADER).required(true).build();
 
@@ -40,6 +45,7 @@ public class Swagger2Configuration implements WebMvcConfigurer {
         aParameters.add(aParameterBuilder.build());
 
         return new Docket(DocumentationType.SWAGGER_2)
+                .enable(enable)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(BASE_PACKAGE))
                 .paths(PathSelectors.regex("(?!/error.*).*")).build().apiInfo(apiInfo())

@@ -1,7 +1,7 @@
 package com.townmc.boot.controller;
 
-import com.townmc.boot.domain.dto.ValidImageResp;
-import com.townmc.boot.domain.enums.Err;
+import com.townmc.boot.model.dto.ValidImageResp;
+import com.townmc.boot.model.enums.Err;
 import com.townmc.boot.service.ValidImageService;
 import com.townmc.boot.service.UploadService;
 import com.townmc.boot.utils.BrokenException;

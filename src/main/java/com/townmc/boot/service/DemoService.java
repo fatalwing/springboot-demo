@@ -1,6 +1,6 @@
 package com.townmc.boot.service;
 
-import com.townmc.boot.domain.po.Demo;
+import com.townmc.boot.model.po.Demo;
 import com.townmc.boot.utils.PageWrapper;
 
 /**

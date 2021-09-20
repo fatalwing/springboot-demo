@@ -3,7 +3,7 @@ package com.townmc.boot.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.townmc.boot.dao.mybatis.DemoMapper;
-import com.townmc.boot.domain.po.Demo;
+import com.townmc.boot.model.po.Demo;
 import com.townmc.boot.service.DemoService;
 import com.townmc.boot.utils.PageWrapper;
 import org.springframework.stereotype.Service;

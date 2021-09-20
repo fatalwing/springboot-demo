@@ -26,7 +26,7 @@
 
         <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl" />
 
-        <javaModelGenerator targetPackage="com.townmc.boot.domain.po" targetProject="src/main/java" />
+        <javaModelGenerator targetPackage="com.townmc.boot.model.po" targetProject="src/main/java" />
 
         <sqlMapGenerator targetPackage="com.townmc.boot.dao.mybatis"  targetProject="src/main/java" />
 

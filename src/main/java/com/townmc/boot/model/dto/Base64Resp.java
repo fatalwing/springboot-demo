@@ -1,4 +1,4 @@
-package com.townmc.boot.domain.dto;
+package com.townmc.boot.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.townmc.boot.domain.dto;
+package com.townmc.boot.model.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

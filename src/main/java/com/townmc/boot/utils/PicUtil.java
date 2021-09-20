@@ -1,6 +1,6 @@
 package com.townmc.boot.utils;
 
-import com.townmc.boot.domain.dto.Base64Resp;
+import com.townmc.boot.model.dto.Base64Resp;
 
 public class PicUtil {
 

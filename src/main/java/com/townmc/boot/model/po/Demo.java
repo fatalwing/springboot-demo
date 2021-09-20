@@ -1,4 +1,4 @@
-package com.townmc.boot.domain.po;
+package com.townmc.boot.model.po;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

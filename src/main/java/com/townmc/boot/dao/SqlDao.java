@@ -1,6 +1,6 @@
 package com.townmc.boot.dao;
 
-import com.townmc.boot.domain.po.Demo;
+import com.townmc.boot.model.po.Demo;
 
 /**
  * !!!!示例程序!!!!

@@ -25,6 +25,11 @@ public class CacheServiceImpl implements CacheService {
     }
 
     @Override
+    public boolean del(String key) {
+        return redisDao.del(key);
+    }
+
+    @Override
     public long increment(String key, int expireSeconds) {
         return redisDao.increment(key, expireSeconds);
     }

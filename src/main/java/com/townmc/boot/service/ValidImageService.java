@@ -1,6 +1,6 @@
 package com.townmc.boot.service;
 
-import com.townmc.boot.domain.dto.ValidImageResp;
+import com.townmc.boot.model.dto.ValidImageResp;
 
 /**
  * @author meng

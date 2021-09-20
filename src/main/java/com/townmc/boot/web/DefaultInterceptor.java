@@ -5,6 +5,7 @@ import com.townmc.boot.utils.SpringUtil;
 import com.townmc.boot.constants.SystemConstants;
 import com.townmc.boot.utils.annotations.AccessToken;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.HandlerMethod;
@@ -22,10 +23,15 @@ import java.util.*;
 @Slf4j
 @Component
 public class DefaultInterceptor implements HandlerInterceptor {
+    @Value("${performance-stat}")
+    private Boolean apiStatEnable;
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object handler) throws Exception {
-
+        long start = System.currentTimeMillis();
+        if(apiStatEnable) {
+            httpServletRequest.setAttribute("start", start);
+        }
         // 检查conroller的方法是否存在AccessToken标注
         if (handler instanceof HandlerMethod) {
             HandlerMethod handlerMethod = (HandlerMethod) handler;

@@ -1,6 +1,6 @@
 package com.townmc.boot.dao.mybatis;
 
-import com.townmc.boot.domain.po.Demo;
+import com.townmc.boot.model.po.Demo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

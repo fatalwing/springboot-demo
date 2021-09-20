@@ -28,7 +28,7 @@ src
  |   |               |   |
  |   |               |   +- mybatis
  |   |               | 
- |   |               +- domain // 实体bean代码
+ |   |               +- model // 实体bean代码
  |   |               |   |
  |   |               |   +- bo // 业务描述或在service间传递的实体定义
  |   |               |   |

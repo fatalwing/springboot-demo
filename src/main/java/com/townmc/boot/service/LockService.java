@@ -1,12 +1,19 @@
 package com.townmc.boot.service;
 
 /**
- * 锁服务定义
+ * @author meng
  */
 public interface LockService {
+    /**
+     * 该锁会一直等待，即使调用线程的interrupt()也不会中断。除非锁的unlock()被调用
+     * 类似悲观锁
+     * @param lockKey
+     */
+    void lock(String lockKey);
 
     /**
      * 尝试获取一次锁，不管成功失败，都立即返回true、false
+     * 类似乐观锁
      * @param lockKey 等待上锁的对象
      * @return true/false
      */
