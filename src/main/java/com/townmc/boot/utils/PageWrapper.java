@@ -1,8 +1,5 @@
 package com.townmc.boot.utils;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
@@ -11,52 +8,42 @@ import java.util.List;
  * 分页数据包装类
  * @author meng
  */
-@ApiModel("分页数据")
 public class PageWrapper<T> {
     /**
      * 数据内容
      */
-    @ApiModelProperty("数据内容")
     private List<T> content;
     /**
      * 当前查询页（从0开始）
      */
-    @ApiModelProperty("当前查询页（从0开始）")
     private Integer number;
     /**
      * 当前查询页项目数量
      */
-    @ApiModelProperty("当前查询页项目数量")
     private Integer numberOfElements;
     /**
      * 总项目数量
      */
-    @ApiModelProperty("总项目数量")
     private Long totalElements;
     /**
      * 总页数
      */
-    @ApiModelProperty("总页数")
     private Integer totalPages;
     /**
      * 每页大小
      */
-    @ApiModelProperty("每页大小")
     private Integer size;
     /**
      * 是否为空
      */
-    @ApiModelProperty("是否为空")
     private boolean empty;
     /**
      * 是否为首页
      */
-    @ApiModelProperty("是否为首页")
     private boolean first;
     /**
      * 是否为尾页
      */
-    @ApiModelProperty("是否为尾页")
     private boolean last;
 
     /**
