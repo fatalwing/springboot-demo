@@ -9,10 +9,10 @@
     <description>demo project for Spring Boot</description>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-cloud.version>2021.0.1</spring-cloud.version>
+        <spring-cloud.version>2021.0.3</spring-cloud.version>
     </properties>
 
     <parent>
@@ -123,7 +123,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>6.0.6</version>
+            <version>8.0.29</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -167,7 +167,7 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.8.0.M2</version>
+            <version>5.8.2</version>
         </dependency>
 
         <!--
@@ -225,11 +225,12 @@
     </dependencyManagement>
 
     <build>
-        <finalName>sb-demo</finalName>
+        <finalName>${name}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.7.0</version>
             </plugin>
             <!--
             mybatis代码生成插件
