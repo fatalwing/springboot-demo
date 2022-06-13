@@ -13,9 +13,14 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import java.io.IOException;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 /**
  * @author meng
  */
+@Tag(name = "公共接口")
 @RestController("commonController")
 @RequestMapping(value = "/common")
 @Slf4j
@@ -26,6 +31,7 @@ public class CommonController {
     @Resource 
     private ValidImageService validImageService;
 
+    @Operation(summary = "上传")
     @PostMapping("/uploadImage.json")
     public Result uploadImage(@RequestBody MultipartFile multipartFile) {
         if (null == multipartFile || multipartFile.isEmpty()) {
@@ -44,8 +50,9 @@ public class CommonController {
         return Result.success(picId);
     }
 
+    @Operation(summary = "验证图片")
     @GetMapping("/get-valid-image")
-    public Result<ValidImageResp> validImage() {
+    public Result<ValidImageResp> validImage(@Parameter(hidden = true) String _r) {
 
         ValidImageResp data = validImageService.takeValidImage();
 

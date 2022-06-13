@@ -10,9 +10,11 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Arrays;
+
 @Configuration
 public class SpringDocConfig {
-    private static final String SECURITY_SCHEME_NAME = "BearerAuth";
+    private static final String SECURITY_SCHEME_NAME = "Authorization";
     @Bean
     public OpenAPI mallTinyOpenAPI() {
         return new OpenAPI()
@@ -20,18 +22,18 @@ public class SpringDocConfig {
                         .description("API 调试")
                         .version("v1.0.0")
                         .license(new License()
-                                .name("Apache 2.0")
-                                .url("https://github.com/fatalwing")))
-                .externalDocs(new ExternalDocumentation()
+                        .name("Apache 2.0")
+                        .url("https://github.com/")))
+                        .externalDocs(new ExternalDocumentation()
                         .description("接口说明")
                         .url("http://www.google.com"))
-                .addSecurityItem(new SecurityRequirement()
-                        .addList(SECURITY_SCHEME_NAME))
-                .components(new Components()
-                        .addSecuritySchemes(SECURITY_SCHEME_NAME, new SecurityScheme()
-                                .name(SECURITY_SCHEME_NAME)
-                                .type(SecurityScheme.Type.HTTP)
-                                .scheme("bearer")
-                                .bearerFormat("JWT")));
+                        .addSecurityItem(new SecurityRequirement().addList("bearer-jwt", Arrays.asList("read", "write")))
+                        .components(new Components().addSecuritySchemes("bearer-jwt",
+                                        new SecurityScheme()
+                                                .in(SecurityScheme.In.HEADER)
+                                                .name(SECURITY_SCHEME_NAME)
+                                                .type(SecurityScheme.Type.HTTP)
+                                                .scheme("bearer")
+                                                .bearerFormat("JWT")));
     }
 }
